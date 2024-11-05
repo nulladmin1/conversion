@@ -1,5 +1,5 @@
 {
-  description = "Nix Flake Template for C++";
+  description = "conversion";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -27,7 +27,7 @@
 
     packages = forEachSystem (system: {
       default = pkgs.${system}.stdenv.mkDerivation {
-        pname = "cpp";
+        pname = "conversion";
         version = "0.1.0";
         src = ./.;
 
@@ -43,7 +43,7 @@
     apps = forEachSystem (system: {
       default = {
         type = "app";
-        program = "${self.packages.${system}.default}/bin/hello";
+        program = "${self.packages.${system}.default}/bin/conversion";
       };
     });
   };
